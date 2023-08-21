@@ -1,0 +1,36 @@
+digraph proceso_decoraciones {
+  rankdir=LR;
+  node [shape=box];
+
+  subgraph cluster_1 {
+    label = "Extracción y Análisis";
+    style = filled;
+    color = lightgrey;
+
+    A [label="Extracción de aceite esencial"];
+    B [label="Análisis GC-MS"];
+    C [label="Generación de base de datos"];
+    D [label="Generación de estructuras 3D\noptimizadas con Open Babel\ny MMFF94"];
+  }
+
+  subgraph cluster_2 {
+    label = "Docking Molecular y Análisis";
+    style = filled;
+    color = lightgrey;
+
+    E [label="Docking molecular\ncon receptores:\nCDK-2, CDK-6,\nTopo I, Topo II,\nBcl-2, VEGFR-2"];
+    F [label="Selección de compuestos\ncon mayor energía de afinidad"];
+    G [label="Dinámica molecular del complejo\nperilaldehido-receptor:\nCDK-2, CDK-6, Topo I, VEGFR-2"];
+    H [label="Análisis de resultados:\nRMSD, RMSF,\nFracción de interacciones, etc."];
+  }
+
+  // Conexiones entre nodos
+  A -> B;
+  B -> C;
+  C -> D;
+  D -> E;
+  E -> F;
+  F -> G;
+  G -> H;
+}
+
